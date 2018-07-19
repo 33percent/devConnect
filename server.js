@@ -3,6 +3,11 @@ const app = express();
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 
+//routes
+const users = require('./routes/api/users');
+const posts = require('./routes/api/posts');
+const profile = require('./routes/api/profile');
+
 dotenv.load();
 
 //db configuration
@@ -16,10 +21,11 @@ mongoose
     })
     .catch(err => console.log(err));
 
+// use routes
 
-app.get('/', (req, res) => {
-    res.send('hello world')
-});
+app.use('/api/users',users);
+app.use('/api/profile',profile);
+app.use('/api/posts',posts);
 
 const port = process.env.PORT || 5000;
 
