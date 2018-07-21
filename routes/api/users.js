@@ -7,6 +7,7 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
 const validateRegisterInput = require('../../validation/register');
+const validateLoginInput = require('../../validation/login');
 // @route GET /api/post/test
 // @desc - Tests post routes
 // @access - PUblic
@@ -25,9 +26,8 @@ router.route('/register').post((req, res, next) => {
         email: req.body.email
     }).then(user => {
         if (user) {
-            return res.status(400).json({
-                email: "Email Already exists"
-            });
+            errors.email = "Email already exists";
+            return res.status(400).json(errors);
         } else {
             const avatar = gravatar.url(
                 req.body.email, {
@@ -59,9 +59,17 @@ router.route('/register').post((req, res, next) => {
     })
 });
 
-router.route('/login').get((req, res, next) => {
+router.route('/login').post((req, res, next) => {
+    //check validation
+    const {
+        errors,
+        isValid
+    } = validateLoginInput(req.body);
+
+
     const email = req.body.email;
     const password = req.body.password;
+
     //finf the user by email
     User.findOne({
             email
@@ -69,9 +77,8 @@ router.route('/login').get((req, res, next) => {
         .then(user => {
             //check for uyser
             if (!user) {
-                return res.sendStatus(404).json({
-                    email: "Not exists"
-                });
+                errors.email = "User not found";
+                return res.sendStatus(404).json(errors);
             }
 
             //check password
@@ -93,9 +100,8 @@ router.route('/login').get((req, res, next) => {
                             });
                         });
                     } else {
-                        return res.sendStatus(400).json({
-                            password: "Password incorrect"
-                        });
+                        errors.password = "Password incorrect";
+                        return res.sendStatus(400).json(errors);
                     }
                 })
         })
