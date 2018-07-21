@@ -6,11 +6,21 @@ const gravatar = require('gravatar');
 const keys = require('../../config/keys');
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
+const validateRegisterInput = require('../../validation/register');
 // @route GET /api/post/test
 // @desc - Tests post routes
 // @access - PUblic
 
 router.route('/register').post((req, res, next) => {
+    const {
+        errors,
+        isValid
+    } = validateRegisterInput(req.body);
+
+    if (!isValid) {
+        return res.sendStatus(400).json(errors);
+    }
+
     User.findOne({
         email: req.body.email
     }).then(user => {

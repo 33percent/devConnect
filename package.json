@@ -4,8 +4,7 @@
   "description": "social network for all devs",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js"
+    "start": "nodemon server.js"
   },
   "author": "sunny",
   "license": "MIT",
