@@ -1,0 +1,20 @@
+{
+  "name": "client",
+  "description": "client side assets",
+  "main": "",
+  "authors": [
+    "sandeep0814 <sandeep0814@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/sandeepkumardev/devConnect",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.1.2"
+  }
+}
