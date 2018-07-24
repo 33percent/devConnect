@@ -1,1 +1,1 @@
-export const TEST_DISPATCH = "TEST_DESTPATCH";
+export const GET_ERRORS = "GET_ERRORS";
