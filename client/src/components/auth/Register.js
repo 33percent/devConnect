@@ -62,38 +62,37 @@ class Register extends Component {
                 Create your DevConnector account
               </p>
               <form noValidate onSubmit={this.onSubmit}>
-              <TextFieldGroup 
-                placeholder="Name"
-                name="name"
-                value={this.state.name}
-                onChange={this.onChange}
-                error={errors.name}
+                <TextFieldGroup
+                  placeholder="Name"
+                  name="name"
+                  value={this.state.name}
+                  onChange={this.onChange}
+                  error={errors.name}
                 />
-                <TextFieldGroup 
-                placeholder="Enter Email address"
-                type="email"
-                name="email"
-                value={this.state.email}
-                onChange={this.onChange}
-                error={errors.email}
-                info="This site uses Gravatar so if you want a profile image, use
-                a Gravatar email"
+                <TextFieldGroup
+                  placeholder="Email"
+                  name="email"
+                  type="email"
+                  value={this.state.email}
+                  onChange={this.onChange}
+                  error={errors.email}
+                  info="This site uses Gravatar so if you want a profile image, use a Gravatar email"
                 />
-                <TextFieldGroup 
-                placeholder="Enter password"
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.onChange}
-                error={errors.password}
+                <TextFieldGroup
+                  placeholder="Password"
+                  name="password"
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.onChange}
+                  error={errors.password}
                 />
-                <TextFieldGroup 
-                placeholder="Enter confirm password"
-                type="password"
-                name="password2"
-                value={this.state.password2}
-                onChange={this.onChange}
-                error={errors.password2}
+                <TextFieldGroup
+                  placeholder="Confirm Password"
+                  name="password2"
+                  type="password"
+                  value={this.state.password2}
+                  onChange={this.onChange}
+                  error={errors.password2}
                 />
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
